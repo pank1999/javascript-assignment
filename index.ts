@@ -1,7 +1,10 @@
 // var a:number=10;
 // console.log(a);
+type memberType={
+    name:string,age?:number
+}
 
-const members = [
+const members:{name:string,age?:number}[] = [
     {name: 'Rakesh Gupta', age: 20},
     {name: 'Yash Jangid', age: 40},
     {name: 'Firoz Khan', age: 41},
@@ -33,7 +36,7 @@ console.log(members);
 
 
 // 3. Get entries where age is between 41-60
-let newMembers=[];
+let newMembers:memberType[]=[];
 
 members.map(item=>{
      if(item.age>41 && item.age<60){
@@ -70,7 +73,13 @@ console.log(maxAge);
 //     }
 //     Less than 35yrs is young, above 35 is old
 
-let groups={
+type groupsType={
+    young:memberType[],
+    old:memberType[],
+    noage:memberType[]
+}
+
+let groups : groupsType={
     young:[],
     old:[],
     noage:[]
@@ -103,7 +112,7 @@ console.log(first,last);
 
 // 9. Create a new array instance adding a new member at index 0,
 //    and keeping existing afterwards
-const NewMember={
+const NewMember:memberType={
     name:"Neeraj pandey",
     age:20
 }
@@ -126,12 +135,12 @@ console.log(rest);
 
 // 13. Create a new object by copying using spread operator, override
 //     one of the properties to assign a new value in the same step
-const Member=members[0];
-const copiedMember={...Member,age:'21'};
+const Member:memberType=members[0];
+const copiedMember:memberType={...Member,age:21};
 console.log(copiedMember);
 
 // 14. Use reduce function on array and object
-const sampleArray=[23,234,1,32,323];
+const sampleArray:number[]=[23,234,1,32,323];
 
 const sumSampleArray=sampleArray.reduce((total,num)=>{
     return total+num;
