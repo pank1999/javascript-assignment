@@ -10,10 +10,10 @@ const members = [
 
 
 //  1 . Get array of first names of everyone
-let firstName=[];
+let firstName=
 members.map(item=>{
-     var firstname=item.name.split(" ")[0];
-     firstName.push(firstname);    
+     return item.name.split(" ")[0];
+    //  firstName.push(firstname);    
 });
 
 console.log(firstName);
@@ -131,6 +131,7 @@ console.log(copiedMember);
 const sampleArray=[23,234,1,32,323];
 
 const sumSampleArray=sampleArray.reduce((total,num)=>{
+    console.log(total,num);
     return total+num;
 });
 
@@ -150,6 +151,11 @@ const sampleObject={
         age:43
     },
 }
+
+sampleObject.reduce((total,num)=>{
+     console.log(total,num);
+});
+
 
 
 
