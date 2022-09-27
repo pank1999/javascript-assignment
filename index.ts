@@ -4,7 +4,7 @@ type memberType={
     name:string,age?:number
 }
 
-const members:{name:string,age?:number}[] = [
+const members:memberType[] = [
     {name: 'Rakesh Gupta', age: 20},
     {name: 'Yash Jangid', age: 40},
     {name: 'Firoz Khan', age: 41},
@@ -34,6 +34,17 @@ members.map(item=>{
 });
 console.log(members);
 
+  //approach 1
+//   members.map(item=>{
+//     let name=item.name.split(" ");
+//     console.log(name[name.length-1]);
+//   })
+
+  //approach 2
+//   members.map(item=>{
+//     let name=item.name.split(" ");
+//     console.log(name.pop());
+//   })
 
 // 3. Get entries where age is between 41-60
 let newMembers:memberType[]=[];
@@ -47,14 +58,16 @@ console.log(newMembers);
 
 // 4. Get average age
 var sum=0;
-
+var count=0;
 members.map(item=>{
     if(item.age){
+        count+=1;
         sum += item.age;   
     }
 });
-const avg=sum/7;
-console.log("avg of Age : ",avg);
+
+const avg=sum/count;
+console.log("avg of Age : ",avg.toPrecision(3));
 
 // 5. Get Person with maximum age
 let maxAge=0;
@@ -148,20 +161,21 @@ const sumSampleArray=sampleArray.reduce((total,num)=>{
 
 console.log(sumSampleArray);
 
-const sampleObject={
-    person1:{
-        name:"Pankaj Pandey",
-        age:34
-    },
-    person2:{
-        name:"saurabh pandey",
-        age:24
-    },
-    person3:{
-        name:"ankit gupta",
-        age:43
-    },
+
+
+type sampleObjectType={
+    name:string,
+    value:number,
+    count:number,
 }
+
+const sampleObject:sampleObjectType={
+    name:"pankaj",   
+    value:30,
+    count:5
+}
+
+
 
 
 

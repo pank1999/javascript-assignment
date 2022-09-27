@@ -43,6 +43,16 @@ members.map(function (item) {
     item.name = firstname + " " + lastname;
 });
 console.log(members);
+//approach 1
+//   members.map(item=>{
+//     let name=item.name.split(" ");
+//     console.log(name[name.length-1]);
+//   })
+//approach 2
+//   members.map(item=>{
+//     let name=item.name.split(" ");
+//     console.log(name.pop());
+//   })
 // 3. Get entries where age is between 41-60
 var newMembers = [];
 members.map(function (item) {
@@ -53,13 +63,15 @@ members.map(function (item) {
 console.log(newMembers);
 // 4. Get average age
 var sum = 0;
+var count = 0;
 members.map(function (item) {
     if (item.age) {
+        count += 1;
         sum += item.age;
     }
 });
-var avg = sum / 7;
-console.log("avg of Age : ", avg);
+var avg = sum / count;
+console.log("avg of Age : ", avg.toPrecision(3));
 // 5. Get Person with maximum age
 var maxAge = 0;
 members.map(function (item) {
@@ -125,16 +137,11 @@ var sumSampleArray = sampleArray.reduce(function (total, num) {
 });
 console.log(sumSampleArray);
 var sampleObject = {
-    person1: {
-        name: "Pankaj Pandey",
-        age: 34
-    },
-    person2: {
-        name: "saurabh pandey",
-        age: 24
-    },
-    person3: {
-        name: "ankit gupta",
-        age: 43
-    }
+    name: "pankaj",
+    value: 30,
+    count: 5
 };
+Object.keys(sampleObject).reduce(function (item) {
+    console.log(sampleObject[item]);
+    return item;
+});
