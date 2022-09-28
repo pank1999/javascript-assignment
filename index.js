@@ -3,10 +3,6 @@ const app = express();
 const _ = require('lodash');
 
 
-app.get("/",(req,res)=>{
-    res.send("helo");
-});
-
 // Assignment Solution
     const members = [
         {name: 'Rakesh Gupta', age: 20},
@@ -40,29 +36,22 @@ app.get("/",(req,res)=>{
     
     
     // 3. Get entries where age is between 41-60
-    
-    // members.map(item=>{
-        //      if(item.age>41 && item.age<60){
-            //         newMembers.push(item);
-            //      }     
-            // });
             
     let newMembers=[];
     _.forEach(members,(item)=>{
-        if(item.age>41 && item.age<60){
-            newMembers.push(item);
-        }        
+       _.inRange(item.age,41,60) && newMembers.push(item);       
      });
+
     console.log(newMembers);
     
     // 4. Get average age
-    var sum=0;
-    _.forEach(members,(item)=>{
+     const sum=[];
+     _.forEach(members,(item)=>{
         if(item.age){
-            sum += item.age;   
+            sum.push(item.age);
         }     
      });
-    const avg=sum/7;
+     const avg=_.mean(sum);
 
     console.log("avg of Age : ",avg);
     
@@ -120,35 +109,43 @@ app.get("/",(req,res)=>{
         name:"Neeraj pandey",
         age:20
     }
-    members.unshift(NewMember);
-    console.log(members);
+    // members.unshift(NewMember);
+    console.log([NewMember,...members]);
+
+
     
     // 10. Extract properties of object using destructuring
-    // const {name,age}=members[0];
-    // console.log(name,age);
+    _.forEach(members,item=>{
+        const {name,age}=item;
+        console.log(name,age);       
+    })
     
     // 11. Rename extracted property of object while destructing
-    const {name :fullName,age:Age}=members[0];
-    console.log(fullName,Age);       
+    _.forEach(members,item=>{
+        const {name :fullName,age:Age}=item;
+        console.log(fullName,Age);       
+    })
     
     // 12. Destructure any property of an object and use spread operator
     //     to get remaining properties in an object
-    const {age,...rest}=members[0];
-    console.log(age);
-    console.log(rest);
+    
+    _.forEach(members,item=>{    
+        const {age,...rest}=item;
+        console.log(age,rest);
+    });
     
     // 13. Create a new object by copying using spread operator, override
     //     one of the properties to assign a new value in the same step
     const Member=members[0];
-    const copiedMember={...Member,age:'21'};
+    const copiedMember={...Member,age:21};
     console.log(copiedMember);
     
     // 14. Use reduce function on array and object
     const sampleArray=[23,234,1,32,323];
     
-    const sumSampleArray=sampleArray.reduce((total,num)=>{
-        return total+num;
-    });
+    const sumSampleArray=_.reduce(sampleArray, function(sum, n) {
+        return sum + n;
+      }, 0);
     
     console.log(sumSampleArray);
     
